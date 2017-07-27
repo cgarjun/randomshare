@@ -1,0 +1,70 @@
+global proc shelf_Pipeline () {
+    global string $gBuffStr;
+    global string $gBuffStr0;
+    global string $gBuffStr1;
+
+
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 35
+        -height 35
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "" 
+        -enableBackground 0
+        -align "center" 
+        -label "from pymel.core import *\nsel = ls(sl=True, dag=True, type='shape..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "view" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "polySmoothProxy.png" 
+        -image1 "polySmoothProxy.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "from pymel.core import *\nsel = ls(sl=True, dag=True, type='shape')\n\nfor obj in sel:\n    select(obj, r=True)\n    try:\n        addAttr(obj, ln='SubDivisionMesh', at='bool', defaultValue=1, minValue=0, maxValue=1)\n    except:\n        pass\n    try:        \n        addAttr(obj, ln='interpolateBoundary', at='long', defaultValue=1, minValue=0, maxValue=1)\n        addAttr(obj, ln='faceVaryingInterpolateBoundary', at='long', defaultValue=1, minValue=0, maxValue=1)\n        addAttr(obj, ln='faceVaryingPropagateCorners', at='long', defaultValue=1, minValue=0, maxValue=1)\n    except Exception, e:\n        print e\n    try:\n        addAttr(obj, ln='rman__torattr___subdivScheme', at='float', defaultValue=0, minValue=0, maxValue=2)\n        addAttr(obj, ln='rman__torattr___subdivFacevaryingInterp', at='float', defaultValue=1, minValue=0, maxValue=3)\n    except Exception, e:\n        print e\n    setAttr('%s.displaySubdComps'%obj, 0)\n    setAttr('%s.enableOpenCL'%obj, 1)\n    setAttr('%s.smoothLevel'%obj, 2)\n    setAttr('%s.useGlobalSmoothDrawType'%obj, 0)\n    setAttr('%s.smoothDrawType'%obj, 3)\n    displaySmoothness(obj, divisionsU=3, divisionsV=3, pointsWire=16, pointsShaded=4, polygonObject=3)\n    \n" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -enable 1
+        -width 35
+        -height 35
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "" 
+        -enableBackground 0
+        -align "center" 
+        -label "from pymel.core import *\nsel = ls(sl=True, dag=True, type='shape..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "cloth" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "polySmoothProxy.png" 
+        -image1 "polySmoothProxy.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "from pymel.core import *\nsel = ls(sl=True, dag=True, type='shape')\n\nfor obj in sel:\n    select(obj, r=True)\n    try:\n        addAttr(obj, ln='SubDivisionMesh', at='bool', defaultValue=1, minValue=0, maxValue=1)\n    except:\n        pass\n    try:        \n        addAttr(obj, ln='interpolateBoundary', at='long', defaultValue=1, minValue=0, maxValue=1)\n        addAttr(obj, ln='faceVaryingInterpolateBoundary', at='long', defaultValue=1, minValue=0, maxValue=1)\n        addAttr(obj, ln='faceVaryingPropagateCorners', at='long', defaultValue=1, minValue=0, maxValue=1)\n    except Exception, e:\n        print e\n    try:\n        addAttr(obj, ln='rman__torattr___subdivScheme', at='float', defaultValue=0, minValue=0, maxValue=2)\n        addAttr(obj, ln='rman__torattr___subdivFacevaryingInterp', at='float', defaultValue=1, minValue=0, maxValue=3)\n    except Exception, e:\n        print e\n    setAttr('%s.displaySubdComps'%obj, 0)\n    setAttr('%s.enableOpenCL'%obj, 1)\n    setAttr('%s.smoothLevel'%obj, 2)\n    setAttr('%s.useGlobalSmoothDrawType'%obj, 0)\n    setAttr('%s.smoothDrawType'%obj, 3)\n    displaySmoothness(obj, divisionsU=3, divisionsV=3, pointsWire=16, pointsShaded=4, polygonObject=3)\n    \n" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+
+} 
